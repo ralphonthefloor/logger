@@ -8,7 +8,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 async function initLogFile(req) {
   try {
-    const content = "Logger started...\n";
+    let time = new Date();
+    time = time.toLocaleString();
+    const content = "Logger started at " + time + "...\n";
     await fs.writeFile(__dirname + '/logs/log.txt', content, { flag: 'a' });
   } catch (err) {
     console.log(err);
